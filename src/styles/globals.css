@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.gradient-overlay {
+  mask-image: linear-gradient(to bottom, transparent 80%, black 100%);
+}
