@@ -20,7 +20,7 @@ export default function RootLayout({
         {children}
 
         <Image
-          className="absolute bottom-10 left-0 right-0 mx-auto z-index-1 "
+          className="absolute bottom-10 left-0 right-0 mx-auto  "
           src="/trinca-logo.svg"
           alt="trinca Logo"
           width={60}

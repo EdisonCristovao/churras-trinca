@@ -1,4 +1,4 @@
-import SubTitle from "../subTitle";
+import SubTitle from "../SubTitle";
 
 type InputProps = {
   name: string;

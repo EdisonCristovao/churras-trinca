@@ -1,8 +1,8 @@
-import Title from "../title";
-import SubTitle from "../subTitle";
-import Card from "../card";
+import Title from "../base/Title";
+import SubTitle from "../base/SubTitle";
+import Card from "../base/Card";
 import Image from "next/image";
-import Text from "../text";
+import Text from "../base/Text";
 
 type CardProps = {
   className?: string;

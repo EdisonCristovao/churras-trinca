@@ -1,9 +1,9 @@
 "use client";
 
-import Input from "@/components/Input";
+import Input from "@/components/base/Input";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import Title from "@/components/title";
+import Title from "@/components/base/Title";
 
 export default function Login() {
   const router = useRouter();
