@@ -4,6 +4,7 @@ import Input from "@/components/base/Input";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Title from "@/components/base/Title";
+import Button from "@/components/base/Button";
 
 export default function Login() {
   const router = useRouter();
@@ -31,12 +32,9 @@ export default function Login() {
           <div className="flex flex-col">
             <Input name="login" label="Login" />
             <Input name="password" label="Senha" />
-            <button
-              className="bg-black text-white font-bold text-[18px] h-[50px] rounded-[18px] mt-8"
-              onClick={submitForm}
-            >
+            <Button className=" mt-8" onClick={submitForm}>
               Entrar
-            </button>
+            </Button>
           </div>
         </form>
       </main>

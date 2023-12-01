@@ -1,3 +1,6 @@
+import { sumBy } from "lodash";
+
+import { Person } from "@/types/person";
 import Title from "../base/Title";
 import SubTitle from "../base/SubTitle";
 import Card from "../base/Card";
@@ -6,28 +9,40 @@ import Text from "../base/Text";
 
 type CardProps = {
   className?: string;
-  day: string;
-  subtitle: string;
+  date: string;
+  description: string;
   numberOfPeople: number;
-  total: number;
+  people: Person[];
+  removeChurras: (e) => void;
 };
 
 export default function EventCard({
-  day,
-  subtitle,
+  date,
+  description,
   numberOfPeople,
-  total,
+  people,
   className,
+  removeChurras,
   ...rest
 }: CardProps) {
+  const total = sumBy(people, "contribution");
   return (
     <Card
       className={`${className} flex flex-col justify-between min-w-[290px] h-[190px]`}
       {...rest}
     >
       <div>
-        <Title>{day}</Title>
-        <SubTitle>{subtitle}</SubTitle>
+        <div className="flex justify-between">
+          <Title>{date}</Title>
+          <Image
+            onClick={removeChurras}
+            src="/icons/trash.svg"
+            alt="trash icon"
+            width={18}
+            height={15}
+          />
+        </div>
+        <SubTitle>{description}</SubTitle>
       </div>
       <div className="flex justify-between">
         <div className="flex">
@@ -38,7 +53,7 @@ export default function EventCard({
             width={18}
             height={15}
           />
-          <Text>{numberOfPeople}</Text>
+          <Text>{people.length}</Text>
         </div>
 
         <div className="flex">

@@ -1,50 +1,72 @@
-import Card from "@/components/base/Card";
-import EventCard from "@/components/EventCard";
-import SubTitle from "@/components/base/SubTitle";
-import Image from "next/image";
+"use client";
 import Link from "next/link";
-import PageContainer from "@/components/PageContainer";
 
-const mockEvent = [
-  { day: "01/12", subtitle: "Niver do gui", numberOfPeople: 12, total: 240 },
-  { day: "01/02", subtitle: "Churras do gui", numberOfPeople: 12, total: 240 },
-  { day: "15/12", subtitle: "Outra parada", numberOfPeople: 12, total: 240 },
-  { day: "01/12", subtitle: "Irruuu", numberOfPeople: 12, total: 240 },
-  { day: "01/12", subtitle: "Irruuu", numberOfPeople: 12, total: 240 },
-  { day: "01/12", subtitle: "Irruuu", numberOfPeople: 12, total: 240 },
-  { day: "01/12", subtitle: "Irruuu", numberOfPeople: 12, total: 240 },
-  { day: "01/12", subtitle: "Irruuu", numberOfPeople: 12, total: 240 },
-];
+import EventCard from "@/components/EventCard";
+import PageContainer from "@/components/PageContainer";
+import AddChurras from "@/components/AddChurras";
+import { useEffect, useState } from "react";
+import { Churras } from "@/types/churras";
+import { useRouter } from "next/navigation";
+
 export default function Home() {
+  const [churrasList, setChurrasList] = useState<any>(null);
+  const router = useRouter();
+
+  const loadData = () => {
+    let churrasList = [];
+    const churrasListString = localStorage.getItem("churrasList");
+    console.log(churrasListString);
+    if (churrasListString) {
+      churrasList = JSON.parse(churrasListString);
+    }
+    setChurrasList(churrasList);
+  };
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const handleFormSubmit = (data: any) => {
+    let churrasList = [];
+    const churrasListString = localStorage.getItem("churrasList");
+    console.log(churrasListString);
+    if (churrasListString) {
+      churrasList = JSON.parse(churrasListString);
+    }
+
+    churrasList.push({ ...data, people: [] });
+    localStorage.setItem("churrasList", JSON.stringify(churrasList));
+
+    router.push(`/churras/${churrasList.length - 1}`);
+  };
+
+  const removeChurras = (e, id: number) => {
+    e.preventDefault();
+    const filteredChurrasListt = churrasList.filter(
+      (_: Churras, index: Number) => id != index
+    );
+
+    localStorage.setItem("churrasList", JSON.stringify(filteredChurrasListt));
+    loadData();
+  };
+
   return (
     <PageContainer pageName="Agenda Churras">
       <div className="grid grid-cols-2 mt-16">
-        {mockEvent.map((event, index) => (
+        {churrasList?.map((churras: Churras, index: number) => (
           <Link
             href={`/churras/${index}`}
             key={index}
             className="flex items-center justify-center"
           >
-            <EventCard className="mb-5" {...event}></EventCard>
+            <EventCard
+              className="mb-5"
+              {...churras}
+              removeChurras={(e) => removeChurras(e, index)}
+            ></EventCard>
           </Link>
         ))}
 
-        <Link
-          href={`/churras/new`}
-          className="flex items-center justify-center"
-        >
-          <Card className="mb-5 bg-[#F1F1F1] min-w-[290px] h-[190px] flex justify-center items-center flex-col">
-            <div className="bg-[#FFD836] w-[90px] h-[90px] rounded-full flex justify-center items-center ">
-              <Image
-                src="/icons/icon_bbq.svg"
-                alt="bbq Logo"
-                width={40}
-                height={44}
-              />
-            </div>
-            <SubTitle className="mt-2">Adicionar Churras</SubTitle>
-          </Card>
-        </Link>
+        <AddChurras handleFormSubmit={handleFormSubmit} />
       </div>
     </PageContainer>
   );
