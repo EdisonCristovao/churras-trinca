@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-import EventCard from "@/components/EventCard";
+import EventCard from "@/components/eventCard";
 import PageContainer from "@/components/PageContainer";
 import AddChurras from "@/components/AddChurras";
 import { Churras } from "@/types/churras";
