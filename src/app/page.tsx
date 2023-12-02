@@ -26,7 +26,7 @@ export default function Home() {
     router.push(`/churras/${churrasList.length}`);
   };
 
-  const removeChurras = (e, id: number) => {
+  const removeChurras = (e: any, id: number) => {
     e.preventDefault();
     ChurrasService.remove(id);
     loadData();

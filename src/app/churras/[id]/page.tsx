@@ -30,7 +30,7 @@ export default function Page({ params }: { params: { id: number } }) {
     loadData();
   }, [loadData]);
 
-  const onSubmit = (data: Person) => {
+  const onSubmit = (data: any) => {
     PersonService.add(params.id, data);
     loadData();
     reset();

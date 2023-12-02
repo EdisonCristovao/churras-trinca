@@ -11,7 +11,7 @@ export default function Login() {
   const router = useRouter();
   const { control, handleSubmit } = useForm();
 
-  const submitForm = (data) => {
+  const submitForm = (data: any) => {
     console.log(data);
     router.push("/");
   };

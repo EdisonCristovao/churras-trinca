@@ -32,10 +32,12 @@ class PersonService {
 
     if (!churras) return;
 
-    churras.people = map(churras.people, (churras: Churras, index: number) => {
-      if (index == id) return data;
-      return churras;
+    const people = churras.people.map((person: any, index: number) => {
+      if (index == id) return { ...data };
+      return { ...churras };
     });
+
+    churras.people = people as Person[];
 
     ChurrasService.update(churras, churrasId);
   }

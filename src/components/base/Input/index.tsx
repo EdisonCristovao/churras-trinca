@@ -6,9 +6,9 @@ import { Churras } from "@/types/churras";
 
 type InputProps = {
   name: string;
-  label: string;
+  label?: string;
   type?: string;
-  control: Control<Churras>;
+  control: Control<any>;
   hasLabel?: boolean;
   inputClassName?: string;
   className?: string;

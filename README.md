@@ -34,3 +34,9 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+Incluir um novo churrasco com data, descrição e observações adicionais; DONE
+Adicionar e remover participantes (colocando o seu valor de contribuição); DONE
+Colocar um valor sugerido por usuário de contribuição (valor com e sem bebida inclusa);
+Visualizar os detalhes do churrasco, total de participantes e valor arrecadado. DONE
+Para ajudá-lo, elaboramos um protótipo que você pode utilizar (ou não) para projetar sua solução:

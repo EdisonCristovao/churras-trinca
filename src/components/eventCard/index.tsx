@@ -11,15 +11,13 @@ type CardProps = {
   className?: string;
   date: string;
   description: string;
-  numberOfPeople: number;
   people: Person[];
-  removeChurras: (e) => void;
+  removeChurras: (e: any) => void;
 };
 
 export default function EventCard({
   date,
   description,
-  numberOfPeople,
   people,
   className,
   removeChurras,
