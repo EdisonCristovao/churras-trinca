@@ -1,5 +1,7 @@
+import { ReactNode } from "react";
+
 type TitleProps = {
-  children: string;
+  children: string | ReactNode;
   className?: string;
 };
 

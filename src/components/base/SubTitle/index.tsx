@@ -1,5 +1,7 @@
+import { ReactNode } from "react";
+
 type SubTitleProps = {
-  children: string;
+  children: string | ReactNode;
   className?: string;
 };
 
@@ -8,5 +10,9 @@ export default function SubTitle({
   className,
   ...rest
 }: SubTitleProps) {
-  return <h1 className={`${className} text-xl font-bold`}>{children}</h1>;
+  return (
+    <h1 className={`${className} text-xl font-bold`} {...rest}>
+      {children}
+    </h1>
+  );
 }

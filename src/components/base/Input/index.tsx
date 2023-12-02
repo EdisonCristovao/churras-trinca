@@ -9,6 +9,10 @@ type InputProps = {
   label: string;
   type?: string;
   control: Control<Churras>;
+  hasLabel?: boolean;
+  inputClassName?: string;
+  className?: string;
+  placeholder?: string;
 };
 
 export default function Input({
@@ -16,20 +20,27 @@ export default function Input({
   label,
   type = "text",
   control,
+  hasLabel = true,
+  inputClassName,
+  className,
+  placeholder,
 }: InputProps) {
   const {
     field: { onChange, onBlur, value, ref },
   } = useController({ name, control, defaultValue: "" });
 
   return (
-    <div className="flex flex-col mb-5">
-      <SubTitle className="text-xl font-bold mb-2">{label}</SubTitle>
+    <div className={`${className} flex flex-col mb-5`}>
+      {hasLabel && (
+        <SubTitle className="text-xl font-bold mb-2">{label}</SubTitle>
+      )}
       <input
-        className="h-[50px] rounded-[18px] px-4 focus:outline-none border"
+        className={`${inputClassName} h-[50px] rounded-[18px] px-5 focus:outline-none border`}
         ref={ref}
         type={type}
         name={name}
         value={value}
+        placeholder={placeholder}
         onBlur={onBlur}
         onChange={(event) => {
           onChange(event.target.value);

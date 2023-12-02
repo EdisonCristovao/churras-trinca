@@ -1,7 +1,7 @@
 import { Churras } from "@/types/churras";
-import { find } from "lodash";
+import { find, map } from "lodash";
 
-const CHURRAS_LS_KEY = "CHURRAS_LIST";
+export const CHURRAS_LS_KEY = "CHURRAS_LIST";
 class ChurrasService {
   addChurras(churras: Churras) {
     let churrasList = this.loadChurras();
@@ -16,7 +16,6 @@ class ChurrasService {
     if (churrasListString) {
       churrasList = JSON.parse(churrasListString);
     }
-    console.log(churrasList);
     return churrasList;
   }
 
@@ -34,12 +33,23 @@ class ChurrasService {
     let churrasList = this.loadChurras();
     const churras: Churras | undefined = find(
       churrasList,
-      (_: Churras, index: number) => index === id
+      (_: Churras, index: number) => index == id
     );
-
     if (!churras) return null;
 
     return churras;
+  }
+
+  update(newChurras: Churras, id: number) {
+    let churrasList = this.loadChurras();
+
+    const churrasListUpdated = map(churrasList, (churras, index) => {
+      if (id == index) {
+        return { ...newChurras };
+      }
+    });
+
+    localStorage.setItem(CHURRAS_LS_KEY, JSON.stringify(churrasListUpdated));
   }
 }
 const churras = new ChurrasService();
