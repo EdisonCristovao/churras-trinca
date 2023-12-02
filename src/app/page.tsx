@@ -7,7 +7,7 @@ import PageContainer from "@/components/PageContainer";
 import AddChurras from "@/components/AddChurras";
 import { Churras } from "@/types/churras";
 import ChurrasService from "@/service/churras";
-import EventCard from "@/components/eventCard";
+import EventCard from "@/components/ChurrasCard";
 
 export default function Home() {
   const [churrasList, setChurrasList] = useState<any>(null);
