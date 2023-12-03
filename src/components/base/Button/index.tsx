@@ -1,5 +1,3 @@
-import SubTitle from "../SubTitle";
-
 type ButtonProps = {
   children: string;
   onClick?: (e: any) => void;

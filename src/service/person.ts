@@ -34,7 +34,7 @@ class PersonService {
 
     const people = churras.people.map((person: any, index: number) => {
       if (index == id) return { ...data };
-      return { ...churras };
+      return { ...person };
     });
 
     churras.people = people as Person[];

@@ -1,19 +1,30 @@
 "use client";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { signIn } from "next-auth/react";
+import Image from "next/image";
 
 import Input from "@/components/base/Input";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
 import Title from "@/components/base/Title";
 import Button from "@/components/base/Button";
-import { useForm } from "react-hook-form";
 
 export default function Login() {
   const router = useRouter();
   const { control, handleSubmit } = useForm();
 
-  const submitForm = (data: any) => {
-    console.log(data);
-    router.push("/");
+  const submitForm = async (data: any) => {
+    const response = await signIn("credentials", {
+      login: data.login,
+      password: data.password,
+      redirect: false,
+    });
+
+    if (response?.error) {
+      console.warn("Usuário ou senha incorretos");
+      return;
+    }
+
+    router.replace("/churras");
   };
 
   return (
@@ -37,9 +48,7 @@ export default function Login() {
           <div className="flex flex-col">
             <Input name="login" label="Login" control={control} />
             <Input name="password" label="Senha" control={control} />
-            <Button className=" mt-8" onClick={submitForm}>
-              Entrar
-            </Button>
+            <Button className=" mt-8">Entrar</Button>
           </div>
         </form>
       </main>

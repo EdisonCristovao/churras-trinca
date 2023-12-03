@@ -43,6 +43,7 @@ export default function Page({ params }: { params: { id: number } }) {
 
   const handleIsPaidClick = (person: Person, index: number) => {
     person.isPaid = !person.isPaid;
+    console.log(person, index);
     PersonService.update(params.id, index, person);
     loadData();
   };

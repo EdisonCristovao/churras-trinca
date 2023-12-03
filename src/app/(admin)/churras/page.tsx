@@ -9,7 +9,7 @@ import { Churras } from "@/types/churras";
 import ChurrasService from "@/service/churras";
 import EventCard from "@/components/ChurrasCard";
 
-export default function Home() {
+export default function Churras() {
   const [churrasList, setChurrasList] = useState<any>(null);
   const router = useRouter();
 

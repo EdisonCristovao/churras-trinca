@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "../styles/globals.css";
-import Image from "next/image";
+import NextAuthProvider from "@/providers/nextAuthProvider";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -17,15 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${raleway.className}`}>
-        {children}
-
-        <Image
-          className="absolute bottom-10 left-0 right-0 mx-auto  "
-          src="/trinca-logo.svg"
-          alt="trinca Logo"
-          width={60}
-          height={60}
-        />
+        <NextAuthProvider>{children}</NextAuthProvider>
       </body>
     </html>
   );
