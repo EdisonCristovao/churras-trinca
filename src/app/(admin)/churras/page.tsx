@@ -4,10 +4,10 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 import PageContainer from "@/components/PageContainer";
-import AddChurras from "@/components/AddChurras";
-import { Churras } from "@/types/churras";
-import ChurrasService from "@/service/churras";
 import EventCard from "@/components/ChurrasCard";
+import AddChurras from "@/components/AddChurras";
+import ChurrasService from "@/service/churras";
+import { Churras } from "@/types/churras";
 import { toast } from "react-toastify";
 
 export default function Churras() {
@@ -36,7 +36,7 @@ export default function Churras() {
 
   return (
     <PageContainer pageName="Agenda Churras">
-      <div className="grid grid-cols-2 mt-16">
+      <div className="grid sm:grid-cols-2 grid-cols-1 mt-16">
         {churrasList?.map((churras: Churras, index: number) => (
           <Link
             href={`/churras/${index}`}

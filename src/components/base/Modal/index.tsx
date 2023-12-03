@@ -35,7 +35,7 @@ export default function Modal({
                 onClick={handleOverlayClick}
               ></div>
             </div>
-            <Card className="z-50 bg-white p-6 rounded-lg min-w-[630px]">
+            <Card className="z-50 bg-white p-6 rounded-lg md:min-w-[630px] min-w-full">
               {children}
             </Card>
           </div>

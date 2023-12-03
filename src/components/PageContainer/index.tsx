@@ -1,5 +1,7 @@
-import Image from "next/image";
 import { ReactNode } from "react";
+import Image from "next/image";
+
+import ButtonLogout from "../ButtonLogOut";
 
 type PageContainerProps = {
   children: ReactNode;
@@ -24,6 +26,7 @@ export default function PageContainer({
       </div>
       <main className="relative z-10 mt-[-140px] flex flex-col max-w-[650px] mx-auto">
         <h1 className="font-extrabold	text-3xl text-center">{pageName}</h1>
+        {/* <ButtonLogout /> */}
         {children}
       </main>
     </div>

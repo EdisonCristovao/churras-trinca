@@ -32,7 +32,7 @@ export default function Login() {
     <div className="bg-[#FFD836] h-screen">
       <div className="relative">
         <Image
-          className="w-full absolute top-0 left-0 z-index-1"
+          className="w-full sm:hidden inline absolute top-0 left-0 z-index-1"
           src="/bbq-pattern.svg"
           alt="bbq Logo"
           width={100}

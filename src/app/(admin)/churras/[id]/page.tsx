@@ -4,17 +4,17 @@ import { useForm } from "react-hook-form";
 import { map, sumBy } from "lodash";
 import Image from "next/image";
 
-import Card from "@/components/base/Card";
-import SubTitle from "@/components/base/SubTitle";
-import Text from "@/components/base/Text";
-import Title from "@/components/base/Title";
-import Checkbox from "@/components/base/Checkbox";
 import PageContainer from "@/components/PageContainer";
-import { Churras } from "@/types/churras";
+import SubTitle from "@/components/base/SubTitle";
+import Checkbox from "@/components/base/Checkbox";
 import ChurrasService from "@/service/churras";
-import Input from "@/components/base/Input";
-import { Person } from "@/types/person";
 import PersonService from "@/service/person";
+import Title from "@/components/base/Title";
+import Input from "@/components/base/Input";
+import Card from "@/components/base/Card";
+import Text from "@/components/base/Text";
+import { Churras } from "@/types/churras";
+import { Person } from "@/types/person";
 
 export default function Page({ params }: { params: { id: number } }) {
   const [churras, setChurras] = useState<Churras>();

@@ -84,7 +84,7 @@ export default function AddChurras({ handleFormSubmit }: any) {
 
           <Input label="Descrição" name="description" control={control} />
           <Input label="Observação" name="observation" control={control} />
-          <div className="flex gap-2 w-full justify-between">
+          <div className="flex gap-2 w-full justify-between sm:flex-row flex-col">
             <Input
               className="w-full"
               label="Valor com bebida"
@@ -100,7 +100,9 @@ export default function AddChurras({ handleFormSubmit }: any) {
               type="number"
             />
           </div>
-          <Button className=" mt-8">Salvar</Button>
+          <div className="mt-8 flex gap-2">
+            <Button>Salvar</Button>
+          </div>
         </form>
       </Modal>
     </div>
