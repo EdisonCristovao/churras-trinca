@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "../styles/globals.css";
 import NextAuthProvider from "@/providers/nextAuthProvider";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -18,6 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${raleway.className}`}>
         <NextAuthProvider>{children}</NextAuthProvider>
+        <ToastContainer />
       </body>
     </html>
   );

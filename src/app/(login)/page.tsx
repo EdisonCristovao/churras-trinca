@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
+import { toast } from "react-toastify";
 import Image from "next/image";
 
 import Input from "@/components/base/Input";
@@ -20,7 +21,7 @@ export default function Login() {
     });
 
     if (response?.error) {
-      console.warn("Usuário ou senha incorretos");
+      toast.error("Usuário ou senha incorretos");
       return;
     }
 
@@ -44,10 +45,15 @@ export default function Login() {
         onSubmit={handleSubmit(submitForm)}
       >
         <Title className="text-center">Agenda Churras</Title>
-        <form action="" className="flex flex-col mt-28 self-center w-[350px]">
+        <form className="flex flex-col mt-28 self-center w-[350px]">
           <div className="flex flex-col">
             <Input name="login" label="Login" control={control} />
-            <Input name="password" label="Senha" control={control} />
+            <Input
+              name="password"
+              label="Senha"
+              control={control}
+              type="password"
+            />
             <Button className=" mt-8">Entrar</Button>
           </div>
         </form>

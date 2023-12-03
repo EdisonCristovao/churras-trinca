@@ -8,6 +8,7 @@ import AddChurras from "@/components/AddChurras";
 import { Churras } from "@/types/churras";
 import ChurrasService from "@/service/churras";
 import EventCard from "@/components/ChurrasCard";
+import { toast } from "react-toastify";
 
 export default function Churras() {
   const [churrasList, setChurrasList] = useState<any>(null);
@@ -23,6 +24,7 @@ export default function Churras() {
 
   const handleFormSubmit = (data: Churras) => {
     ChurrasService.addChurras(data);
+    toast.success("Churrasquin cadastrado com sucesso");
     router.push(`/churras/${churrasList.length}`);
   };
 

@@ -1,0 +1,6 @@
+{
+  "users": [
+    { "login": "trinca01", "password": "semsenha" },
+    { "login": "trinca02", "password": "comsenha" }
+  ]
+}

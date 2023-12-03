@@ -27,6 +27,7 @@ export default function Input({
 }: InputProps) {
   const {
     field: { onChange, onBlur, value, ref },
+    fieldState: { error },
   } = useController({ name, control, defaultValue: "" });
 
   return (
@@ -35,7 +36,8 @@ export default function Input({
         <SubTitle className="text-xl font-bold mb-2">{label}</SubTitle>
       )}
       <input
-        className={`${inputClassName} h-[50px] rounded-[18px] px-5 focus:outline-none border`}
+        className={`${inputClassName} h-[50px] rounded-[18px] px-5 focus:outline-none border data-[hasError=true]:border-red-500 data-[hasError=false]:border`}
+        data-hasError={!!error}
         ref={ref}
         type={type}
         name={name}

@@ -1,5 +1,12 @@
-import NextAuth, { NextAuthOptions, User } from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import JsonUsers from "@/../users.json";
+import { find } from "lodash";
+
+type User = {
+  login: string;
+  password: string;
+};
 
 const authOptions: NextAuthOptions = {
   providers: [
@@ -11,7 +18,12 @@ const authOptions: NextAuthOptions = {
       },
 
       async authorize(credentials, req) {
-        if (credentials?.login === "Edison")
+        const user = find(
+          JsonUsers.users,
+          (user: User) => user.login === credentials?.login
+        );
+
+        if (user?.password === credentials?.password)
           return new Promise((resolve) => resolve(credentials as any));
 
         return null;

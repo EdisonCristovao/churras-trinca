@@ -2,7 +2,9 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
+import InputMask from "react-input-mask";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import Card from "../base/Card";
 import SubTitle from "../base/SubTitle";
@@ -10,16 +12,16 @@ import Modal from "../base/Modal";
 import Input from "../base/Input";
 import Title from "../base/Title";
 import Button from "../base/Button";
-import { Churras } from "@/types/churras";
+import { churrasSchema } from "@/types/churras";
 
 export default function AddChurras({ handleFormSubmit }: any) {
   const [isOpen, setIsOpen] = useState(false);
   const {
     control,
     handleSubmit,
-    reset,
-    formState: { isSubmitting },
-  } = useForm<Churras>({
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(churrasSchema),
     mode: "onChange",
   });
 
@@ -31,10 +33,9 @@ export default function AddChurras({ handleFormSubmit }: any) {
     setIsOpen(false);
   };
 
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data: any) => {
     handleFormSubmit(data);
     closeModal();
-    reset();
   };
 
   return (
@@ -59,9 +60,49 @@ export default function AddChurras({ handleFormSubmit }: any) {
             name="churras_name"
             control={control}
           />
-          <Input label="Data" name="date" control={control} />
+
+          <Controller
+            name="date"
+            control={control}
+            render={({ field }) => (
+              <InputMask
+                mask="99/99/9999"
+                maskChar={null}
+                value={field.value}
+                onChange={field.onChange}
+              >
+                {(inputProps: any) => (
+                  <div className={`flex flex-col mb-5`}>
+                    <SubTitle className="text-xl font-bold mb-2">Data</SubTitle>
+                    <input
+                      data-hasError={!!errors.date}
+                      className="h-[50px] rounded-[18px] px-5 focus:outline-none border data-[hasError=true]:border-red-500 data-[hasError=false]:border"
+                      {...inputProps}
+                    ></input>
+                  </div>
+                )}
+              </InputMask>
+            )}
+          />
+
           <Input label="Descrição" name="description" control={control} />
           <Input label="Observação" name="observation" control={control} />
+          <div className="flex gap-2 w-full justify-between">
+            <Input
+              className="w-full"
+              label="Valor com bebida"
+              name="openValue"
+              control={control}
+              type="number"
+            />
+            <Input
+              className="w-full"
+              label="Valor Sem bebida"
+              name="notOpenValue"
+              control={control}
+              type="number"
+            />
+          </div>
           <Button className=" mt-8">Salvar</Button>
         </form>
       </Modal>
