@@ -1,9 +1,10 @@
 import { Metadata } from "next";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 import { Raleway } from "next/font/google";
 import Image from "next/image";
-import { getServerSession } from "next-auth";
+
 import { authOptions } from "../api/auth/[...nextauth]/route";
-import { redirect } from "next/navigation";
 
 const raleway = Raleway({ subsets: ["latin"] });
 

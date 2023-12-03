@@ -1,7 +1,8 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import JsonUsers from "@/../users.json";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import { find } from "lodash";
+
+import JsonUsers from "@/../users.json";
 
 type User = {
   login: string;

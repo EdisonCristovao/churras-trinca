@@ -60,30 +60,27 @@ export default function AddChurras({ handleFormSubmit }: any) {
             name="churras_name"
             control={control}
           />
+          <div className={`flex flex-col mb-5`}>
+            <SubTitle className="text-xl font-bold mb-2">Data</SubTitle>
 
-          <Controller
-            name="date"
-            control={control}
-            render={({ field }) => (
-              <InputMask
-                mask="99/99/9999"
-                maskChar={null}
-                value={field.value}
-                onChange={field.onChange}
-              >
-                {(inputProps: any) => (
-                  <div className={`flex flex-col mb-5`}>
-                    <SubTitle className="text-xl font-bold mb-2">Data</SubTitle>
-                    <input
-                      data-hasError={!!errors.date}
-                      className="h-[50px] rounded-[18px] px-5 focus:outline-none border data-[hasError=true]:border-red-500 data-[hasError=false]:border"
-                      {...inputProps}
-                    ></input>
-                  </div>
-                )}
-              </InputMask>
-            )}
-          />
+            <Controller
+              name="date"
+              control={control}
+              render={({ field }) => (
+                <InputMask
+                  mask="99/99/9999"
+                  maskChar={null}
+                  value={field.value}
+                  onChange={field.onChange}
+                >
+                  <input
+                    data-hasError={!!errors.date}
+                    className="h-[50px] rounded-[18px] px-5 focus:outline-none border data-[hasError=true]:border-red-500 data-[hasError=false]:border"
+                  />
+                </InputMask>
+              )}
+            />
+          </div>
 
           <Input label="Descrição" name="description" control={control} />
           <Input label="Observação" name="observation" control={control} />
