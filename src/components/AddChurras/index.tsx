@@ -40,7 +40,7 @@ export default function AddChurras({ handleFormSubmit }: any) {
 
   return (
     <div className="flex items-center justify-center" onClick={openModal}>
-      <Card className="mb-5 bg-[#F1F1F1] min-w-[290px] h-[190px] flex justify-center items-center flex-col">
+      <Card className="mb-5 bg-[#F1F1F1] sm:min-w-[290px] min-w-[350px] h-[190px] flex justify-center items-center flex-col">
         <div className="bg-[#FFD836] w-[90px] h-[90px] rounded-full flex justify-center items-center ">
           <Image
             src="/icons/icon_bbq.svg"

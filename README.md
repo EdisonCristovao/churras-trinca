@@ -1,42 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Churras-trinca
 
-## Getting Started
+Disponivel em - [Churras-trinca live](https://churras-trinca.cristovao.codes/)
 
-First, run the development server:
+Foi usado `Next-Auth` para controle de sessão. As credenciais se encontram estaticas dentro do projeto em `users.json` apenas para testes, esse arquivo pode ser editado ou usar as credenciais que ja configuradas.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```json
+{
+  "users": [
+    { "login": "trinca01", "password": "semsenha" },
+    { "login": "trinca02", "password": "comsenha" }
+  ]
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<p align="center">
+  <img src="docs/login.png" width="250" />
+  <img src="docs/churrasList.png" width="250" />
+  <img src="docs/ChurrasDetail.png" width="250" />
+</p>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Como rodar
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Primero instale os pacotes então rode o servidor local
 
-## Learn More
+```bash
+yarn install
+yarn dev
+# http://localhost:3000
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Pacotes usados
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next 13.4
+- next-auth
+- tailwindcss
+- date-fns
+- lodash
+- react-hook-form
+- yup
+- react-input-mask
+- react-toastify
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Informações relevantes
 
-## Deploy on Vercel
+- O projeto armazena os churras no localstorage, foi criado uma camada de abstração `src/service/{churras e person}` para lidar com isso. caso isso tivesse que ser integrado com alguma api ou BAAS seria muito mais simples só atulaizar os services.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Dificuldades
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-Incluir um novo churrasco com data, descrição e observações adicionais; DONE
-Adicionar e remover participantes (colocando o seu valor de contribuição); DONE
-Colocar um valor sugerido por usuário de contribuição (valor com e sem bebida inclusa);
-Visualizar os detalhes do churrasco, total de participantes e valor arrecadado. DONE
-Para ajudá-lo, elaboramos um protótipo que você pode utilizar (ou não) para projetar sua solução:
+- Minha primeira grande decisão foi usar ou não o next com app router (app folder), usando next 13 com app router, nao poderia usar um `chakra` por limitaçoes da propria lib. entao usei o `tailwindcss`
+- Iniciei o projeto com `Next 14`, porem tive um problema com `next-auth` que me fez fazer um downground para a 13, afinal muita coisa sem tempo a perder não é :D
+- Não entendi muito bem a diferença da descriçao do churras para observaçoes, acabei nao mostrando isso na tela na pagina de detalhes do churrasco.

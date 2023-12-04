@@ -26,7 +26,7 @@ export default function EventCard({
   const total = sumBy(people, "contribution");
   return (
     <Card
-      className={`${className} flex flex-col justify-between min-w-[290px] h-[190px]`}
+      className={`${className} flex flex-col justify-between sm:min-w-[290px] min-w-[350px] h-[190px]`}
       {...rest}
     >
       <div>
