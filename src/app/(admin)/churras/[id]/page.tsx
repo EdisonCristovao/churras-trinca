@@ -43,7 +43,6 @@ export default function Page({ params }: { params: { id: number } }) {
 
   const handleIsPaidClick = (person: Person, index: number) => {
     person.isPaid = !person.isPaid;
-    console.log(person, index);
     PersonService.update(params.id, index, person);
     loadData();
   };
@@ -51,7 +50,7 @@ export default function Page({ params }: { params: { id: number } }) {
   const total = sumBy(churras?.people, "contribution");
 
   return (
-    <PageContainer pageName="Agenda Churras">
+    <PageContainer pageName="Agenda Churras" hasNavigateToBack={true}>
       <Card className="w-[90%] mt-16">
         <div className="flex items-center justify-between">
           <Title>{churras?.date}</Title>

@@ -50,3 +50,8 @@ yarn dev
 - Minha primeira grande decisão foi usar ou não o next com app router (app folder), usando next 13 com app router, nao poderia usar um `chakra` por limitaçoes da propria lib. entao usei o `tailwindcss`
 - Iniciei o projeto com `Next 14`, porem tive um problema com `next-auth` que me fez fazer um downground para a 13, afinal muita coisa sem tempo a perder não é :D
 - Não entendi muito bem a diferença da descriçao do churras para observaçoes, acabei nao mostrando isso na tela na pagina de detalhes do churrasco.
+
+## Melhorias
+
+- Aproveitaria mais os server side components
+- Melhorar as validações de formularios e menssagens de feedback

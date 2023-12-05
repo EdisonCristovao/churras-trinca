@@ -2,15 +2,19 @@ import { ReactNode } from "react";
 import Image from "next/image";
 
 import ButtonLogout from "../ButtonLogOut";
+import Link from "next/link";
+import ArrowBack from "./ArrowBack";
 
 type PageContainerProps = {
   children: ReactNode;
   pageName: string;
+  hasNavigateToBack: boolean;
 };
 
 export default function PageContainer({
   children,
   pageName,
+  hasNavigateToBack = false,
   ...rest
 }: PageContainerProps) {
   return (
@@ -25,8 +29,8 @@ export default function PageContainer({
         />
       </div>
       <main className="relative z-10 mt-[-140px] flex flex-col max-w-[650px] mx-auto">
+        {hasNavigateToBack && <ArrowBack />}
         <h1 className="font-extrabold	text-3xl text-center">{pageName}</h1>
-        {/* <ButtonLogout /> */}
         {children}
       </main>
     </div>
