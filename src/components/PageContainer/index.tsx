@@ -8,7 +8,7 @@ import ArrowBack from "./ArrowBack";
 type PageContainerProps = {
   children: ReactNode;
   pageName: string;
-  hasNavigateToBack: boolean;
+  hasNavigateToBack?: boolean;
 };
 
 export default function PageContainer({
